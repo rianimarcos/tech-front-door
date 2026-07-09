@@ -1,0 +1,1443 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Front Door: Submit a Request</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/svg+xml" href="assets/po-logo.svg" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="hero-inner">
+          <img class="logo" src="assets/po-logo.svg" alt="Post Office" />
+          <div class="hero-copy">
+            <p class="eyebrow">Product &amp; Technology</p>
+            <h1>Submit a request to the Tech Front Door</h1>
+            <p class="lede">
+              The single intake channel for technology product demand. Give us a
+              clear, evidence-led picture of the problem and we'll route it to
+              the right team.
+            </p>
+          </div>
+        </div>
+        <nav class="stepper" aria-label="Progress">
+          <ol id="stepper">
+            <li data-step="A" class="is-active">
+              <span>A</span><em>Your details</em>
+            </li>
+            <li data-step="B"><span>B</span><em>The problem</em></li>
+            <li data-step="C" class="is-hidden">
+              <span>C</span><em>AI triage</em>
+            </li>
+            <li data-step="R"><span>✓</span><em>Review &amp; submit</em></li>
+          </ol>
+        </nav>
+      </header>
+
+      <main class="shell">
+        <form id="intake" novalidate>
+          <!-- ═══════════════════════════════════════════════════════════ -->
+          <!-- SECTION A -->
+          <!-- ═══════════════════════════════════════════════════════════ -->
+          <section class="step is-active" data-step="A">
+            <div class="step-head">
+              <p class="kicker">Section A</p>
+              <h2>Requester basics</h2>
+              <p class="sub">Before you submit, a quick note:</p>
+              <ul class="notice">
+                <li>
+                  New ideas are welcome but may not progress unless they align
+                  with agreed priorities.
+                </li>
+                <li>
+                  Submitting this form does not guarantee funding or delivery.
+                </li>
+                <li>
+                  All requests are triaged by the Product Front Door team and
+                  routed.
+                </li>
+              </ul>
+            </div>
+
+            <div class="field">
+              <label for="q1_name">1. Name <span class="req">*</span></label>
+              <p class="hint">
+                If submitting on behalf of someone else, use their name.
+              </p>
+              <input
+                type="text"
+                id="q1_name"
+                name="q1_name"
+                required
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="field">
+              <label for="q2_email"
+                >2. Email address <span class="req">*</span></label
+              >
+              <p class="hint">Used for follow-up and triage confirmation.</p>
+              <input
+                type="email"
+                id="q2_email"
+                name="q2_email"
+                required
+                autocomplete="email"
+              />
+            </div>
+
+            <div class="field">
+              <label for="q3_department"
+                >3. Department / business area <span class="req">*</span></label
+              >
+              <div class="select">
+                <select id="q3_department" name="q3_department" required>
+                  <option value="">Select your answer</option>
+                  <option>Technology</option>
+                  <option>Transformation</option>
+                  <option>Corporate Affairs</option>
+                  <option>Operations</option>
+                  <option>Revenue</option>
+                  <option>Finance</option>
+                  <option>Legal</option>
+                  <option>People</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══════════════════════════════════════════════════════════ -->
+          <!-- SECTION B -->
+          <!-- ═══════════════════════════════════════════════════════════ -->
+          <section class="step" data-step="B">
+            <div class="step-head">
+              <p class="kicker">Section B</p>
+              <h2>Problem definition</h2>
+              <p class="sub">
+                State the problem first: not the solution. We ask about who,
+                what, evidence and outcomes before context and delivery.
+              </p>
+            </div>
+
+            <div class="field">
+              <label for="q4_summary"
+                >4. Problem summary <span class="req">*</span></label
+              >
+              <p class="hint">
+                A short, crisp statement of the problem. Example: "New customers
+                drop off during onboarding at step 3 due to unclear
+                instructions."
+              </p>
+              <textarea
+                id="q4_summary"
+                name="q4_summary"
+                maxlength="400"
+                rows="3"
+                required
+              ></textarea>
+              <p class="counter">
+                <span data-count-for="q4_summary">0</span> / 400
+              </p>
+            </div>
+
+            <div
+              class="field"
+              data-require-any="q5_segment"
+              data-error="Please select at least one affected group."
+            >
+              <label
+                >5. Who is affected, and in what context?
+                <span class="req">*</span></label
+              >
+              <p class="hint">Be specific. Avoid "all users".</p>
+              <p class="sub-label">
+                Who is affected <span class="req">*</span>
+              </p>
+              <div class="choices" role="group" aria-label="Affected segment">
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q5_segment"
+                    value="Postmasters"
+                  /><span>Postmasters</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q5_segment"
+                    value="End customers"
+                  /><span>End customers</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q5_segment"
+                    value="Branch colleagues"
+                  /><span>Branch colleagues</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q5_segment"
+                    value="Specific internal team"
+                  /><span>Specific internal team</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q5_segment"
+                    value="Third party / supplier"
+                  /><span>Third party / supplier</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q5_segment"
+                    value="Not sure"
+                  /><span>Not sure</span></label
+                >
+              </div>
+              <p class="sub-label">
+                Context: where and when this occurs
+                <span class="req">*</span>
+              </p>
+              <textarea
+                id="q5_context"
+                name="q5_context"
+                rows="2"
+                placeholder="e.g. 'new customers in the first 7 days', 'agents handling high-volume queues'"
+                required
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <label for="q6_job"
+                >6. What are you trying to do? (job / task)
+                <span class="req">*</span></label
+              >
+              <p class="hint">
+                Describe the goal or workflow in plain language.
+              </p>
+              <textarea
+                id="q6_job"
+                name="q6_job"
+                maxlength="500"
+                rows="3"
+                required
+              ></textarea>
+              <p class="counter">
+                <span data-count-for="q6_job">0</span> / 500
+              </p>
+            </div>
+
+            <div class="field">
+              <label
+                >7. What is blocking them? (friction / pain / inefficiency)
+                <span class="req">*</span></label
+              >
+              <p class="hint">Describe the obstacle, not the solution.</p>
+              <div>
+                <div class="subfield">
+                  <label class="sub-label" for="q7_blocker"
+                    >Friction / blocker <span class="req">*</span></label
+                  >
+                  <textarea
+                    id="q7_blocker"
+                    name="q7_blocker"
+                    rows="3"
+                    placeholder="e.g. new users can't find the reset link"
+                    required
+                  ></textarea>
+                </div>
+                <div class="subfield">
+                  <label class="sub-label" for="q7_manifests"
+                    >How the friction manifests
+                    <span class="req">*</span></label
+                  >
+                  <textarea
+                    id="q7_manifests"
+                    name="q7_manifests"
+                    rows="3"
+                    placeholder="e.g. 30% drop at step 3, support tickets rising"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="field"
+              data-require-any="q8_quant q8_qual q8_proxy"
+              data-error="Please add at least one piece of evidence."
+            >
+              <label
+                >8. What evidence do you have? <span class="req">*</span></label
+              >
+              <p class="hint">
+                Analytics, interviews, support tickets, logs, observations. At
+                least one is required.
+              </p>
+              <p class="sub-label">
+                Quantitative evidence <span class="opt">(optional)</span>
+              </p>
+              <textarea
+                name="q8_quant"
+                rows="2"
+                placeholder="Logs, stats, funnel numbers"
+              ></textarea>
+              <p class="sub-label">
+                Qualitative evidence <span class="opt">(optional)</span>
+              </p>
+              <textarea
+                name="q8_qual"
+                rows="2"
+                placeholder="e.g. Postmaster feedback, interview quotes"
+              ></textarea>
+              <p class="sub-label">
+                Proxy metrics <span class="opt">(optional)</span>
+              </p>
+              <p class="hint">
+                Example: support contacts per 1,000 users, repeat visits, or
+                average handling time while direct outcome data is unavailable.
+              </p>
+              <textarea
+                name="q8_proxy"
+                rows="2"
+                placeholder="Use a practical stand-in measure until direct metrics are available"
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <label
+                >9. Which outcome(s) does this affect, and how?
+                <span class="req">*</span></label
+              >
+              <p class="hint">
+                Connect the problem to a measurable business or product outcome.
+              </p>
+              <p class="sub-label">
+                Primary outcome <span class="req">*</span>
+              </p>
+              <input
+                type="text"
+                name="q9_primary"
+                placeholder="e.g. reduce cost-to-serve, improve onboarding completion, reduce compliance risk"
+                required
+              />
+              <p class="sub-label">
+                Secondary outcomes <span class="opt">(optional)</span>
+              </p>
+              <div
+                class="choices grid-2"
+                role="group"
+                aria-label="Secondary outcomes"
+              >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q9_secondary"
+                    value="Improve activation"
+                  /><span>Improve activation</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q9_secondary"
+                    value="Increase retention"
+                  /><span>Increase retention</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q9_secondary"
+                    value="Reduce cost-to-serve"
+                  /><span>Reduce cost-to-serve</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q9_secondary"
+                    value="Improve reliability"
+                  /><span>Improve reliability</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q9_secondary"
+                    value="Speed up delivery"
+                  /><span>Speed up delivery</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q9_secondary"
+                    value="Grow revenue"
+                  /><span>Grow revenue</span></label
+                >
+              </div>
+              <p class="sub-label">
+                Description of impact <span class="req">*</span>
+              </p>
+              <textarea
+                name="q9_impact"
+                rows="2"
+                placeholder="e.g. prevents activation from improving; increases cost-to-serve"
+                required
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <label
+                >10. How severe is it, and how far does it reach?
+                <span class="req">*</span></label
+              >
+              <div class="grid-2">
+                <div class="subfield">
+                  <label class="sub-label" for="q10_frequency"
+                    >Frequency <span class="req">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="q10_frequency"
+                    name="q10_frequency"
+                    placeholder="e.g. daily, weekly, per transaction"
+                    required
+                  />
+                </div>
+                <div class="subfield">
+                  <label class="sub-label" for="q10_reach"
+                    >% of users / volume affected
+                    <span class="req">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="q10_reach"
+                    name="q10_reach"
+                    placeholder="e.g. 30% of new users"
+                    required
+                  />
+                </div>
+              </div>
+              <p class="sub-label">
+                Business impact <span class="req">*</span>
+              </p>
+              <textarea
+                name="q10_impact"
+                rows="2"
+                placeholder="e.g. slows onboarding, adds support cost"
+                required
+              ></textarea>
+            </div>
+
+            <div
+              class="field"
+              data-require-any="q11_systems q11_teams q11_regulatory"
+              data-error="Please fill at least one: or type 'none identified'."
+            >
+              <label
+                >11. Are there any dependencies or constraints?
+                <span class="req">*</span></label
+              >
+              <p class="hint">
+                Anything that limits or shapes how this problem can be solved.
+                At least one field, or type "none identified".
+              </p>
+              <p class="sub-label">
+                Systems involved <span class="opt">(optional)</span>
+              </p>
+              <input
+                type="text"
+                name="q11_systems"
+                placeholder="e.g. Horizon, Salesforce, internal APIs"
+              />
+              <p class="sub-label">
+                Teams involved <span class="opt">(optional)</span>
+              </p>
+              <input
+                type="text"
+                name="q11_teams"
+                placeholder="e.g. Product Ops, Data, Legal"
+              />
+              <p class="sub-label">
+                Regulatory / compliance <span class="opt">(optional)</span>
+              </p>
+              <input
+                type="text"
+                name="q11_regulatory"
+                placeholder="e.g. GDPR, FCA, PCI-DSS"
+              />
+            </div>
+
+            <div class="field">
+              <label
+                >12. Are there any current workarounds?
+                <span class="req">*</span></label
+              >
+              <p class="hint">
+                Are users or teams compensating manually? Enter "no workaround
+                in place" if none.
+              </p>
+              <p class="sub-label">
+                Workaround description <span class="req">*</span>
+              </p>
+              <textarea
+                name="q12_workaround"
+                rows="2"
+                placeholder="e.g. team manually re-keys the data into a spreadsheet"
+                required
+              ></textarea>
+              <p class="sub-label">
+                Cost of workaround <span class="opt">(optional)</span>
+              </p>
+              <input
+                type="text"
+                name="q12_cost"
+                placeholder="Time, errors, frustration: optional"
+              />
+            </div>
+
+            <div class="field">
+              <label
+                >13. What is the desired outcome? (behaviour change)
+                <span class="req">*</span></label
+              >
+              <p class="hint">What should be true if the problem is solved?</p>
+              <p class="sub-label">
+                Desired behaviour <span class="req">*</span>
+              </p>
+              <textarea
+                name="q13_behaviour"
+                rows="2"
+                placeholder="e.g. new users complete onboarding in one session"
+                required
+              ></textarea>
+              <p class="sub-label">
+                Expected metric movement <span class="req">*</span>
+              </p>
+              <input
+                type="text"
+                name="q13_metric"
+                placeholder="e.g. drop-off rate falls from 30% to 10%"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="q14_not"
+                >14. What is this NOT a request for? (guardrail)
+                <span class="req">*</span></label
+              >
+              <p class="hint">
+                State explicitly what this is not, to prevent solution bias -
+                e.g. "a new onboarding wizard", "a dashboard".
+              </p>
+              <input type="text" id="q14_not" name="q14_not" required />
+            </div>
+
+            <div class="field">
+              <label
+                >15. Is this a new idea, or does it relate to existing project
+                work? <span class="req">*</span></label
+              >
+              <div class="choices" role="radiogroup">
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q15_type"
+                    value="New idea"
+                    required
+                  /><span
+                    >New idea, not currently linked to an existing project</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q15_type"
+                    value="Existing project"
+                  /><span
+                    >Existing project work, relates to a project already in
+                    flight</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q15_type" value="Not sure" /><span
+                    >Not sure</span
+                  ></label
+                >
+              </div>
+            </div>
+
+            <div
+              class="field conditional"
+              data-show-when='{"q15_type":"Existing project"}'
+            >
+              <label
+                >16. Existing project name and project code
+                <span class="req">*</span></label
+              >
+              <div class="grid-2">
+                <div class="subfield">
+                  <label class="sub-label" for="q16_project_name"
+                    >Project name <span class="req">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="q16_project_name"
+                    name="q16_project_name"
+                    placeholder="e.g. Payments Modernisation"
+                    required
+                  />
+                </div>
+                <div class="subfield">
+                  <label class="sub-label" for="q16_project_code"
+                    >Project code <span class="req">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="q16_project_code"
+                    name="q16_project_code"
+                    placeholder="e.g. PRJ-1234"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>17. ABP alignment <span class="req">*</span></label>
+              <p class="sub-label">Alignment <span class="req">*</span></p>
+              <div class="choices" role="radiogroup">
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q17_alignment"
+                    value="Aligned"
+                    required
+                  /><span
+                    >Yes, this supports an agreed ABP priority</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q17_alignment"
+                    value="Not sure"
+                  /><span
+                    >Not sure: I'd like triage to help me confirm</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q17_alignment"
+                    value="Not aligned"
+                  /><span
+                    >No / not ABP-aligned: submitting anyway as a new idea</span
+                  ></label
+                >
+              </div>
+              <p class="sub-label" style="margin-top: 20px">
+                Aligned pillar(s)
+                <span class="opt">(select all that apply)</span>
+              </p>
+              <div class="choices grid-2" role="group">
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q17_pillar"
+                    value="Pillar 1"
+                  /><span>Pillar 1</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q17_pillar"
+                    value="Pillar 2"
+                  /><span>Pillar 2</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q17_pillar"
+                    value="Pillar 3"
+                  /><span>Pillar 3</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q17_pillar"
+                    value="Pillar 4"
+                  /><span>Pillar 4</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q17_pillar"
+                    value="Pillar 5 - Re-setting stakeholder relationships"
+                  /><span
+                    >Pillar 5 - Re-setting stakeholder relationships</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q17_pillar"
+                    value="Spans multiple"
+                  /><span>Not sure / spans multiple pillars</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q17_pillar"
+                    value="Not applicable"
+                  /><span>Not applicable: no ABP pillar yet</span></label
+                >
+              </div>
+            </div>
+
+            <div class="field">
+              <label
+                >18. Sponsorship and budget <span class="req">*</span></label
+              >
+              <p class="hint">
+                The Front Door does not automatically fund requests.
+              </p>
+              <p class="sub-label">Sponsorship <span class="req">*</span></p>
+              <div class="choices" role="radiogroup">
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q18_sponsorship"
+                    value="Yes"
+                    required
+                  /><span
+                    >Yes, I have a named sponsor at SLT / Director level</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q18_sponsorship"
+                    value="Pending"
+                  /><span>Pending, I am seeking sponsorship</span></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q18_sponsorship" value="No" /><span
+                    >No, no sponsor yet</span
+                  ></label
+                >
+              </div>
+              <div
+                class="conditional"
+                data-show-when='{"q18_sponsorship":["Yes","Pending"]}'
+              >
+                <label class="sub-label" for="q18_sponsor_name"
+                  >Sponsor name and role <span class="req">*</span></label
+                >
+                <input
+                  type="text"
+                  id="q18_sponsor_name"
+                  name="q18_sponsor_name"
+                  placeholder="e.g. Alex Smith, Director of Ops"
+                  required
+                />
+              </div>
+
+              <p class="sub-label" style="margin-top: 20px">
+                Budget <span class="req">*</span>
+              </p>
+              <div class="choices" role="radiogroup">
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q18_budget"
+                    value="Team"
+                    required
+                  /><span>Funded from our team / function budget</span></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q18_budget" value="Project" /><span
+                    >Funded from a project / programme budget</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q18_budget" value="Partial" /><span
+                    >Partial, some funding identified</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q18_budget" value="No" /><span
+                    >No budget identified</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q18_budget"
+                    value="Not sure"
+                  /><span>Not sure</span></label
+                >
+              </div>
+              <div
+                class="conditional"
+                data-show-when='{"q18_budget":["Team","Project"]}'
+              >
+                <label class="sub-label" for="q18_budget_source"
+                  >Budget source / cost centre <span class="req">*</span></label
+                >
+                <input
+                  type="text"
+                  id="q18_budget_source"
+                  name="q18_budget_source"
+                  placeholder="e.g. Cost centre CC-4421"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label
+                >19. Have you discussed this with a Product Owner?
+                <span class="req">*</span></label
+              >
+              <div class="choices" role="radiogroup">
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q19_po"
+                    value="Yes"
+                    required
+                  /><span>Yes</span></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q19_po" value="No" /><span
+                    >No</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q19_po" value="Not sure" /><span
+                    >Not sure who the right Product Owner is</span
+                  ></label
+                >
+              </div>
+              <div class="conditional" data-show-when='{"q19_po":"Yes"}'>
+                <label class="sub-label" for="q19_po_name"
+                  >Product Owner name <span class="req">*</span></label
+                >
+                <input
+                  type="text"
+                  id="q19_po_name"
+                  name="q19_po_name"
+                  placeholder="e.g. Jane Doe"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="q20_files">20. Supporting attachments</label>
+              <p class="hint">
+                Optional but encouraged. Up to 5 files, 10 MB each. Accepted:
+                .docx, .pdf, .xlsx, .pptx, .csv, .png, .jpg, .vsdx, .txt
+              </p>
+              <label class="dropzone" for="q20_files">
+                <span class="drop-icon">↑</span>
+                <span class="drop-text"
+                  ><strong>Click to upload</strong> or drag and drop</span
+                >
+                <input
+                  type="file"
+                  id="q20_files"
+                  name="q20_files"
+                  multiple
+                  accept=".docx,.pdf,.xlsx,.pptx,.csv,.png,.jpg,.vsdx,.txt"
+                />
+              </label>
+              <ul id="q20_files_list" class="file-list"></ul>
+            </div>
+
+            <div class="field">
+              <label
+                >21. Does your request include any use of Artificial
+                Intelligence (AI)? <span class="req">*</span></label
+              >
+              <p class="hint">
+                Generative AI, predictive models, automated decisioning,
+                chatbots, classification or recommendation engines: built
+                in-house, via a supplier, or as a SaaS feature.
+              </p>
+              <div class="choices" role="radiogroup">
+                <label class="choice"
+                  ><input type="radio" name="q21_ai" value="No" required /><span
+                    >No: proceed to submit</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q21_ai" value="Yes" /><span
+                    >Yes</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q21_ai" value="Not sure" /><span
+                    >Not sure</span
+                  ></label
+                >
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══════════════════════════════════════════════════════════ -->
+          <!-- SECTION C: AI risk triage -->
+          <!-- ═══════════════════════════════════════════════════════════ -->
+          <section
+            class="step"
+            data-step="C"
+            data-active-when='{"q21_ai":["Yes","Not sure"]}'
+          >
+            <div class="step-head">
+              <p class="kicker">Section C</p>
+              <h2>AI risk triage</h2>
+              <p class="sub">
+                Answers here don't gate approval: they help route your request
+                to the right governance forums.
+              </p>
+            </div>
+
+            <div class="field">
+              <label
+                >22. What is the AI element doing?
+                <span class="req">*</span></label
+              >
+              <div class="choices" role="group">
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q22_capability"
+                    value="Generating content"
+                    required
+                  /><span
+                    >Generating content (text, images, summaries)</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q22_capability"
+                    value="Predicting or forecasting"
+                  /><span>Predicting or forecasting</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q22_capability"
+                    value="Classifying or detecting"
+                  /><span>Classifying or detecting</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q22_capability"
+                    value="Recommending"
+                  /><span>Recommending</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q22_capability"
+                    value="Conversational"
+                  /><span>Conversational assistant / chatbot</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q22_capability"
+                    value="Automation with AI decisioning"
+                  /><span>Automation with AI decisioning</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="checkbox"
+                    name="q22_capability"
+                    value="Other"
+                  /><span>Other (please specify)</span></label
+                >
+              </div>
+              <div
+                class="conditional"
+                data-show-when='{"q22_capability":"Other"}'
+              >
+                <label class="sub-label" for="q22_other"
+                  >Please specify <span class="req">*</span></label
+                >
+                <input
+                  type="text"
+                  id="q22_other"
+                  name="q22_other"
+                  placeholder="Describe the other AI capability in one line"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="q23_outcome"
+                >23. What decision or outcome will the AI support?
+                <span class="req">*</span></label
+              >
+              <p class="hint">
+                "The AI will help us…, and the output will be used to…"
+              </p>
+              <textarea
+                id="q23_outcome"
+                name="q23_outcome"
+                maxlength="500"
+                rows="3"
+                required
+              ></textarea>
+              <p class="counter">
+                <span data-count-for="q23_outcome">0</span> / 500
+              </p>
+            </div>
+
+            <div class="field">
+              <label
+                >24. Will it influence outcomes for people?
+                <span class="req">*</span></label
+              >
+              <div class="choices" role="radiogroup">
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q24_people"
+                    value="Yes"
+                    required
+                  /><span>Yes</span></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q24_people" value="No" /><span
+                    >No</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q24_people"
+                    value="Not sure"
+                  /><span>Not sure</span></label
+                >
+              </div>
+              <div
+                class="conditional"
+                data-show-when='{"q24_people":["Yes","Not sure"]}'
+              >
+                <p class="hint">Who it may affect:</p>
+                <div class="choices grid-2">
+                  <label class="choice"
+                    ><input
+                      type="checkbox"
+                      name="q24_who"
+                      value="Customers"
+                    /><span>Customers / public</span></label
+                  >
+                  <label class="choice"
+                    ><input
+                      type="checkbox"
+                      name="q24_who"
+                      value="Colleagues"
+                    /><span>Colleagues</span></label
+                  >
+                  <label class="choice"
+                    ><input
+                      type="checkbox"
+                      name="q24_who"
+                      value="Postmasters"
+                    /><span>Postmasters</span></label
+                  >
+                  <label class="choice"
+                    ><input
+                      type="checkbox"
+                      name="q24_who"
+                      value="Third parties"
+                    /><span>Third parties (suppliers, partners)</span></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label
+                >25. Will it use any personal, sensitive, or confidential data?
+                <span class="req">*</span></label
+              >
+              <div class="choices" role="radiogroup">
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q25_data"
+                    value="Yes"
+                    required
+                  /><span>Yes</span></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q25_data" value="No" /><span
+                    >No</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q25_data" value="Not sure" /><span
+                    >Not sure</span
+                  ></label
+                >
+              </div>
+              <div
+                class="conditional"
+                data-show-when='{"q25_data":["Yes","Not sure"]}'
+              >
+                <p class="hint">Tick all that apply:</p>
+                <div class="choices">
+                  <label class="choice"
+                    ><input
+                      type="checkbox"
+                      name="q25_types"
+                      value="Personal data"
+                    /><span
+                      >Personal data (names, emails, IDs, contact details)</span
+                    ></label
+                  >
+                  <label class="choice"
+                    ><input
+                      type="checkbox"
+                      name="q25_types"
+                      value="Special category"
+                    /><span
+                      >Special category data (health, biometrics, etc.)</span
+                    ></label
+                  >
+                  <label class="choice"
+                    ><input
+                      type="checkbox"
+                      name="q25_types"
+                      value="Financial/HR"
+                    /><span
+                      >Financial / HR / disciplinary / complaint data</span
+                    ></label
+                  >
+                  <label class="choice"
+                    ><input
+                      type="checkbox"
+                      name="q25_types"
+                      value="Commercially sensitive"
+                    /><span>Commercially sensitive internal data</span></label
+                  >
+                  <label class="choice"
+                    ><input
+                      type="checkbox"
+                      name="q25_types"
+                      value="Large volumes"
+                    /><span
+                      >Large volumes of personal information or merged
+                      datasets</span
+                    ></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label
+                >26. How automated is it, and is there human oversight?
+                <span class="req">*</span></label
+              >
+              <div class="choices" role="radiogroup">
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q26_autonomy"
+                    value="Advisory"
+                    required
+                  /><span
+                    >Advisory only: human decides, AI suggests</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q26_autonomy"
+                    value="Human approval"
+                  /><span>Human approval required before action</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q26_autonomy"
+                    value="Mostly automated"
+                  /><span>Mostly automated with occasional review</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q26_autonomy"
+                    value="Fully automated"
+                  /><span
+                    >Fully automated, actions happen without review</span
+                  ></label
+                >
+              </div>
+            </div>
+
+            <div class="field">
+              <label
+                >27. Is there an easy override or fallback?
+                <span class="req">*</span></label
+              >
+              <div class="choices" role="radiogroup">
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q27_override"
+                    value="Yes"
+                    required
+                  /><span>Yes</span></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q27_override" value="No" /><span
+                    >No</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q27_override"
+                    value="Not sure"
+                  /><span>Not sure</span></label
+                >
+              </div>
+              <div class="conditional" data-show-when='{"q27_override":"Yes"}'>
+                <label class="sub-label" for="q27_override_desc"
+                  >Override / fallback path</label
+                >
+                <input
+                  type="text"
+                  id="q27_override_desc"
+                  name="q27_override_desc"
+                  placeholder="Briefly describe how a user can bypass the AI"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label
+                >28. What is the scale and visibility?
+                <span class="req">*</span></label
+              >
+              <div class="choices" role="radiogroup">
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q28_scale"
+                    value="Small pilot"
+                    required
+                  /><span>Small pilot, single team / limited users</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q28_scale"
+                    value="Multiple teams"
+                  /><span>Multiple teams / business area</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q28_scale"
+                    value="Enterprise-wide"
+                  /><span>Enterprise-wide rollout</span></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q28_scale"
+                    value="Customer-facing"
+                  /><span>Customer-facing / public-facing</span></label
+                >
+              </div>
+            </div>
+
+            <div class="field">
+              <label
+                >29. Where is the AI coming from?
+                <span class="req">*</span></label
+              >
+              <div class="choices" role="radiogroup">
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q29_source"
+                    value="Existing approved"
+                    required
+                  /><span
+                    >Existing approved tool (e.g. Microsoft Copilot)</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q29_source"
+                    value="New vendor"
+                  /><span
+                    >New vendor or SaaS product with AI features</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q29_source" value="Bespoke" /><span
+                    >Bespoke AI built internally or by a supplier</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q29_source"
+                    value="Public models"
+                  /><span
+                    >Uses public or open models, or accepts public user
+                    input</span
+                  ></label
+                >
+              </div>
+            </div>
+
+            <div class="field">
+              <label
+                >30. Will any prompts, files, or data leave POL to a third
+                party? <span class="req">*</span></label
+              >
+              <div class="choices" role="radiogroup">
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q30_external"
+                    value="Yes"
+                    required
+                  /><span>Yes</span></label
+                >
+                <label class="choice"
+                  ><input type="radio" name="q30_external" value="No" /><span
+                    >No</span
+                  ></label
+                >
+                <label class="choice"
+                  ><input
+                    type="radio"
+                    name="q30_external"
+                    value="Not sure"
+                  /><span>Not sure</span></label
+                >
+              </div>
+              <div
+                class="conditional"
+                data-show-when='{"q30_external":["Yes","Not sure"]}'
+              >
+                <label class="sub-label" for="q30_external_who"
+                  >Third party / service
+                  <span class="opt">(if known)</span></label
+                >
+                <input
+                  type="text"
+                  id="q30_external_who"
+                  name="q30_external_who"
+                  placeholder="e.g. OpenAI, Microsoft Copilot, Anthropic"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="q31_ai_files"
+                >31. AI-specific supporting attachments</label
+              >
+              <p class="hint">
+                Optional. Vendor data sheets, model cards, DPIAs, architecture
+                diagrams, prior risk assessments. Up to 5 files, 10 MB each.
+              </p>
+              <label class="dropzone" for="q31_ai_files">
+                <span class="drop-icon">↑</span>
+                <span class="drop-text"
+                  ><strong>Click to upload</strong> or drag and drop</span
+                >
+                <input
+                  type="file"
+                  id="q31_ai_files"
+                  name="q31_ai_files"
+                  multiple
+                  accept=".docx,.pdf,.xlsx,.pptx,.csv,.png,.jpg,.vsdx,.txt"
+                />
+              </label>
+              <ul id="q31_ai_files_list" class="file-list"></ul>
+            </div>
+          </section>
+
+          <!-- ═══════════════════════════════════════════════════════════ -->
+          <!-- REVIEW -->
+          <!-- ═══════════════════════════════════════════════════════════ -->
+          <section class="step" data-step="R">
+            <div class="step-head">
+              <p class="kicker">Review</p>
+              <h2>One last look</h2>
+              <p class="sub">
+                Check your answers below, then submit. You'll get a confirmation
+                email shortly after.
+              </p>
+            </div>
+            <div id="review" class="review"></div>
+          </section>
+
+          <!-- ═══════════════════════════════════════════════════════════ -->
+          <!-- SUCCESS -->
+          <!-- ═══════════════════════════════════════════════════════════ -->
+          <section class="step done" data-step="DONE">
+            <div class="done-card">
+              <div class="tick">✓</div>
+              <h2>Request submitted</h2>
+              <p>
+                Thanks: your request has been sent to the Product Front Door
+                team for triage. A confirmation email is on its way.
+              </p>
+              <button type="button" class="btn" onclick="location.reload()">
+                Submit another request
+              </button>
+            </div>
+          </section>
+
+          <!-- Nav -->
+          <div class="nav-bar">
+            <button type="button" id="back" class="btn btn-ghost" disabled>
+              Back
+            </button>
+            <div class="nav-meta"><span id="stepLabel">Step 1 of 3</span></div>
+            <button type="button" id="next" class="btn btn-primary">
+              Continue
+            </button>
+            <button type="submit" id="submit" class="btn btn-primary" hidden>
+              Submit request
+            </button>
+          </div>
+        </form>
+      </main>
+
+      <footer class="foot">
+        <p>Post Office · Product &amp; Technology · Tech Front Door</p>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "tech-front-door",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "python3 -m http.server 3000 --directory src",
+    "start": "npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
